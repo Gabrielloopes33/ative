@@ -3,7 +3,7 @@ import Image from "next/image";
 const Newsletter = () => {
     return (
         <div className='-mt-32 relative z-3'>
-            <div className="mx-auto max-w-2xl lg:max-w-7xl bg-blue-500 rounded-3xl">
+            <div className="mx-auto max-w-2xl lg:max-w-7xl bg-white rounded-3xl">
                 <div className="grid grid-cols-1 gap-y-10 gap-x-6 lg:grid-cols-2 xl:gap-x-8">
 
                     {/* COLUMN-1 */}
@@ -21,20 +21,20 @@ const Newsletter = () => {
 
                     {/* COLUMN-2 */}
 <div className="p-10 flex flex-col justify-center">
-    <h3 className="text-4xl md:text-5xl font-semibold mb-3 text-white">Vamos conversar?</h3>
-    <h4 className="text-base font-normal mb-7 text-offwhite">Transforme sua contabilidade em uma aliada do crescimento. Entre em contato agora mesmo e descubra como podemos ajudar sua empresa a prosperar.</h4>
+    <h3 className="text-4xl md:text-5xl font-semibold mb-3 text-ative-navy">Vamos conversar?</h3>
+    <h4 className="text-base font-normal mb-7 text-ative-gray">Transforme sua contabilidade em uma aliada do crescimento. Entre em contato agora mesmo e descubra como podemos ajudar sua empresa a prosperar.</h4>
     <div className="flex flex-col gap-2">
         <input 
             type="text" 
             name="name" 
-            className="py-4 text-sm w-full text-black bg-white rounded-lg pl-4" 
+            className="py-4 text-sm w-full text-ative-navy bg-ative-light rounded-lg pl-4 border border-ative-navy/20" 
             placeholder="Seu nome" 
             autoComplete="off" 
         />
         <input 
             type="email" 
             name="email" 
-            className="py-4 text-sm w-full text-black bg-white rounded-lg pl-4" 
+            className="py-4 text-sm w-full text-ative-navy bg-ative-light rounded-lg pl-4 border border-ative-navy/20" 
             placeholder="Seu melhor E-mail" 
             autoComplete="off" 
         />
@@ -42,11 +42,11 @@ const Newsletter = () => {
             <input 
                 type="tel" 
                 name="whatsapp" 
-                className="py-4 text-sm w-full text-black bg-white rounded-l-lg pl-4" 
+                className="py-4 text-sm w-full text-ative-navy bg-ative-light rounded-l-lg pl-4 border border-ative-navy/20" 
                 placeholder="Seu Whatsapp" 
                 autoComplete="off" 
             />
-            <button className="bg-gold text-white font-medium py-2 px-4 rounded-r-lg hover:bg-darkblue transition duration-300 ease-in-out">
+            <button className="bg-ative-navy text-white font-medium py-2 px-4 rounded-r-lg hover:bg-ative-blue transition duration-300 ease-in-out">
                 <Image src={'/assets/newsletter/plane.svg'} alt="plane-img" width={20} height={20} />
             </button>
         </div>

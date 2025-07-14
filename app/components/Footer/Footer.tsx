@@ -20,14 +20,14 @@ const products: ProductType[] = [
 
 const footer = () => {
     return (
-        <div className="bg-darkblue -mt-40">
+        <div className="bg-ative-navy -mt-40">
             <div className="mx-auto max-w-2xl pt-48 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
                 <div className="my-24 grid grid-cols-1 gap-y-10 gap-x-16 sm:grid-cols-2 lg:grid-cols-12 xl:gap-x-8">
 
                     {/* COLUMN-1 */}
 
                     <div className='col-span-4 md:col-span-12 lg:col-span-4'>
-                        <img src={'/assets/footer/logo.svg'} alt="logo" className='pb-8' />
+                        <Image src={'/assets/footer/logo.svg'} alt="logo" width={180} height={60} className='pb-8' />
                         <div className='flex gap-4'>
                             <Link href="https://facebook.com" className='footer-fb-icons'>
                                 <Image src={'/assets/footer/facebook.svg'} alt="facebook" width={15} height={20} />

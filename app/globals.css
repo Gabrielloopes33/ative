@@ -5,6 +5,14 @@
 @import "slick-carousel/slick/slick.css";
 @import "slick-carousel/slick/slick-theme.css";
 
+:root {
+    --ative-navy: #0A1B3D;
+    --ative-blue: #1E3A8A;
+    --ative-light: #E8F4FD;
+    --ative-gray: #64748B;
+    --ative-gold: #F59E0B;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
 }
