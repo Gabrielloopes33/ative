@@ -1,11 +1,10 @@
 import { Disclosure } from '@headlessui/react';
 import { Bars3Icon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import Image from 'next/image';
 import React from 'react';
 import Drawer from "./Drawer";
 import Drawerdata from "./Drawerdata";
-import Signdialog from "./Signdialog";
-import Registerdialog from "./Registerdialog";
 
 
 interface NavigationItem {
@@ -17,8 +16,6 @@ interface NavigationItem {
 const navigation: NavigationItem[] = [
     { name: 'Início', href: '/', current: true },
     { name: 'Serviços', href: '/services', current: false },
-    { name: 'Sobre', href: '#about', current: false },
-
 ]
 
 function classNames(...classes: string[]) {
@@ -39,16 +36,22 @@ const Navbar = () => {
                             {/* LOGO */}
 
                             <div className="flex flex-shrink-0 items-center">
-                                <img
-                                    className="block h-16 w-32 lg:hidden"
-                                    src={'/assets/logo/logo2.png'}
-                                    alt="dsign-logo"
-                                />
-                                <img
-                                    className="hidden h-16 w-32 lg:block"
-                                    src={'/assets/logo/logo2.png'}
-                                    alt="dsign-logo"
-                                />
+                                <Link href="/">
+                                    <Image
+                                        className="block h-16 w-32 lg:hidden cursor-pointer"
+                                        src={'/assets/logo/logo2.png'}
+                                        alt="ative-gestão-logo"
+                                        width={128}
+                                        height={64}
+                                    />
+                                    <Image
+                                        className="hidden h-16 w-32 lg:block cursor-pointer"
+                                        src={'/assets/logo/logo2.png'}
+                                        alt="ative-gestão-logo"
+                                        width={128}
+                                        height={64}
+                                    />
+                                </Link>
                             </div>
 
                             {/* LINKS */}
@@ -72,17 +75,28 @@ const Navbar = () => {
                             </div>
                         </div>
 
-                        {/* REGISTER DIALOG */}
-
-                        <Registerdialog />
-
+                        {/* CONTACT BUTTON */}
+                        <div className="hidden lg:block">
+                            <Link
+                                href="https://api.whatsapp.com/send?phone=553130943020&fbclid=PAZXh0bgNhZW0CMTEAAadp00eP6QJHKA6GKUtXImcCE09VwImd85UoHv-Nzk3E8BQWgToeS4JoAHFE9A_aem_vj2UIvhvmJTRZ2u8vM6tHQ"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-ative-navy hover:bg-ative-blue text-white font-medium py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                            >
+                                Contato
+                            </Link>
+                        </div>
 
                         {/* DRAWER FOR MOBILE VIEW */}
 
                         {/* DRAWER ICON */}
 
                         <div className='block lg:hidden'>
-                            <Bars3Icon className="block h-6 w-6" aria-hidden="true" onClick={() => setIsOpen(true)} />
+                            <Bars3Icon 
+                                className="block h-6 w-6 text-white cursor-pointer hover:text-ative-light transition-colors duration-200" 
+                                aria-hidden="true" 
+                                onClick={() => setIsOpen(true)} 
+                            />
                         </div>
 
                         {/* DRAWER LINKS DATA */}

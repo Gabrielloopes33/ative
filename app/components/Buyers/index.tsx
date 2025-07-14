@@ -1,4 +1,7 @@
+"use client"
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+import { useInView } from '../../hooks/useInView';
 
 interface cardDataType {
     imgSrc: string;
@@ -36,21 +39,74 @@ const cardData: cardDataType[] = [
 ]
 
 const Buyers = () => {
+    const [ref, isInView] = useInView();
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.2,
+                delayChildren: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50, scale: 0.9 },
+        visible: { 
+            opacity: 1, 
+            y: 0, 
+            scale: 1,
+            transition: {
+                type: "spring" as const,
+                stiffness: 100,
+                damping: 15
+            }
+        }
+    };
+
     return (
-        <div className='mx-auto max-w-7xl py-16 px-6'>
-            <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5'>
+        <motion.div 
+            ref={ref}
+            className='mx-auto max-w-7xl py-16 px-6'
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+        >
+            <motion.div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-y-20 gap-x-5'>
                 {cardData.map((items, i) => (
-                    <div className='flex flex-col justify-center items-center' key={i}>
-                        <div className='flex justify-center border border-white/20 p-2 w-10 rounded-lg'>
+                    <motion.div 
+                        className='flex flex-col justify-center items-center group' 
+                        key={i}
+                        variants={itemVariants}
+                        whileHover={{ 
+                            scale: 1.05, 
+                            y: -10,
+                            transition: { type: "spring", stiffness: 300 }
+                        }}
+                    >
+                        <motion.div 
+                            className='flex justify-center border border-white/20 p-2 w-10 rounded-lg group-hover:border-white/40 transition-colors duration-300'
+                            whileHover={{ rotate: 360 }}
+                            transition={{ duration: 0.6 }}
+                        >
                             <Image src={items.imgSrc} alt={items.imgSrc} width={30} height={30} />
-                        </div>
-                        <h2 className='text-4xl lg:text-6xl text-white font-semibold text-center mt-5'>{items.percent}</h2>
-                        <h3 className='text-2xl text-white font-semibold text-center lg:mt-6'>{items.heading}</h3>
-                        <p className='text-lg font-normal text-white text-center text-opacity-70 mt-2'>{items.subheading}</p>
-                    </div>
+                        </motion.div>
+                        <motion.h2 
+                            className='text-4xl lg:text-6xl text-white font-semibold text-center mt-5'
+                            initial={{ scale: 0 }}
+                            animate={isInView ? { scale: 1 } : { scale: 0 }}
+                            transition={{ delay: 0.5 + i * 0.1, type: "spring", stiffness: 200 }}
+                        >
+                            {items.percent}
+                        </motion.h2>
+                        <h3 className='text-2xl text-white font-semibold text-center lg:mt-6 group-hover:text-ative-light transition-colors duration-300'>{items.heading}</h3>
+                        <p className='text-lg font-normal text-white text-center text-opacity-70 mt-2 group-hover:text-opacity-90 transition-all duration-300'>{items.subheading}</p>
+                    </motion.div>
                 ))}
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
     )
 }
 
